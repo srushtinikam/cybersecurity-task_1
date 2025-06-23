@@ -3,9 +3,13 @@ This repository contains my work for Task 1 of the Cybersecurity Internship. The
 Key Highlights:
 
 ->Local network scanned using TCP SYN scan (nmap -sS)
+
 ->Identified open ports on devices within 192.168.1.0/24
+
 ->Analyzed scan results and researched vulnerabilities
+
 ->Provided security recommendations based on findings
+
 ->Report and screenshots included
 
 Tools Used:
