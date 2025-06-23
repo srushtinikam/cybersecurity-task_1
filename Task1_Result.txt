@@ -1,0 +1,64 @@
+
+CYBERSECURITY TASK 1: SCAN YOUR LOCAL NETWORK FOR OPEN PORTS
+
+OBJECTIVE:
+Identify open ports on devices within the local network using Nmap and optionally analyze traffic with Wireshark.
+This helps in understanding network exposure and basic reconnaissance techniques.
+
+TOOLS USED:
+- Nmap (https://nmap.org) – for port scanning
+- Wireshark (https://www.wireshark.org) – optional, for packet analysis
+- Windows Terminal / Linux Terminal
+
+STEPS PERFORMED:
+
+1. Find Local IP Range:
+   - Used the command: ipconfig (on Windows)
+   - Identified IP range: 192.168.1.0/24 (example)
+
+2. Run TCP SYN Scan:
+   - Executed: nmap -sS 192.168.1.0/24
+   - The -sS option performs a stealth TCP SYN scan.
+   - Result: Discovered active hosts and open ports.
+
+3. Save Scan Results:
+   - Command used: nmap -sS 192.168.1.0/24 -oN scan_results.txt
+
+4. Analyze Scan Results:
+
+   Device: 192.168.1.1
+   - Open Ports: 53 (domain), 80 (http), 443 (https)
+   - MAC Address: 20:0C:86:E6:05:88
+   - Interpretation: Likely router or gateway
+
+   Device: 192.168.1.2
+   - All ports closed
+   - Interpretation: Secure or idle device
+
+   Device: 192.168.1.5 (My PC)
+   - Open Ports: 135, 139, 445, 5357
+   - MAC Address: 92:34:C1:DD:15:A7
+   - Interpretation: Windows machine with file-sharing enabled
+
+7. Identify Potential Security Risks:
+
+   Device: 192.168.1.1 (Router/Gateway)
+   - Port 53 (DNS): Risk of spoofing or amplification if misconfigured.
+   - Port 80 (HTTP): Unencrypted traffic, vulnerable to MITM attacks.
+   - Port 443 (HTTPS): Secure, but depends on SSL/TLS configuration.
+
+   Device: 192.168.1.2
+   - All ports closed – Minimal risk.
+
+   Device: 192.168.1.5 (My PC)
+   - Port 135 (MSRPC): Risk of remote code execution.
+   - Port 139 (NetBIOS): May leak system information.
+   - Port 445 (Microsoft-DS): Common ransomware target (e.g., WannaCry).
+   - Port 5357 (WSDAPI): Exposes device discovery features.
+
+RECOMMENDED SECURITY ACTIONS:
+- Close unused ports using a firewall or router settings.
+- Disable SMBv1 (obsolete and vulnerable).
+- Use strong passwords and enable multi-factor authentication.
+- Keep systems and software updated regularly.
+- Limit service exposure to trusted IP ranges only.
