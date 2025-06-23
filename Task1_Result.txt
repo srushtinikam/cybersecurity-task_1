@@ -1,0 +1,76 @@
+
+CYBERSECURITY TASK 1: SCAN YOUR LOCAL NETWORK FOR OPEN PORTS
+
+OBJECTIVE:
+Identify open ports on devices within the local network using Nmap and optionally analyze traffic with Wireshark.
+This helps in understanding network exposure and basic reconnaissance techniques.
+
+TOOLS USED:
+- Nmap (https://nmap.org) – for port scanning
+- Wireshark (https://www.wireshark.org) – optional, for packet analysis
+- Windows Terminal / Linux Terminal
+___________________________________________________________________________________________________
+Result:
+
+I scanned the local IP range 192.168.1.5/24 using a TCP SYN scan. Here's what I found:
+
+192.168.1.1
+Host is up
+
+Open Ports:
+
+53/tcp → domain (likely DNS)
+
+80/tcp → http
+
+443/tcp → https
+
+MAC Address: 20:0C:86:E6:05:88 (GX India Pvt)
+
+Interpretation:
+This is most likely the router or gateway device, as it’s hosting DNS, HTTP, and HTTPS services.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+192.168.1.2
+Host is up
+
+All 1000 ports closed
+
+Interpretation:
+The device is active but not offering any visible services over TCP — could be a secure/idle device.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+192.168.1.5 (My Own Device)
+Host is up
+
+Open Ports:
+
+135/tcp → msrpc
+
+139/tcp → netbios-ssn
+
+445/tcp → microsoft-ds
+
+5357/tcp → wsdapi
+
+MAC Address: 92:34:C1:DD:15:A7 (Unknown)
+
+Interpretation:
+These ports are related to Windows networking (RPC, SMB file sharing, Web Services for Devices), suggesting this is a Windows machine — likely the one used for scanning.
+
+______________________________________________________________________________________________________________________________________________________________
+
+Summary
+
+Total IPs scanned: 256
+
+Active hosts detected: 3
+
+Open ports identified: Ports 53, 80, 443, 135, 139, 445, 5357
+
+
+
+
+
